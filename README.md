@@ -1,8 +1,8 @@
 <div align="center">
 
-# 💬 Chit-Chat - dotConnect
+# 🌐 dotConnect
 
-### A Modern Real-time Social Chat Platform
+### A Comprehensive Social Collaboration Platform
 
 <p>
   <img src="https://img.shields.io/badge/React-18.3.1-blue?style=flat-square&logo=react" alt="React" />
@@ -12,25 +12,27 @@
   <img src="https://img.shields.io/badge/License-ISC-yellow?style=flat-square" alt="License" />
 </p>
 
-> ✨ **Conversations that feel immediate but stay intentional** ✨
+> ✨ **Connect, Share, and Collaborate in Real-Time** ✨
 >
-> A full-stack MERN social messaging platform with real-time communication, verified accounts, connection-based relationships, and instant notifications.
+> A full-stack MERN platform connecting students and professionals through messaging, resource sharing, networking, and real-time collaboration.
 
-<img alt="dotConnect Demo" src="https://via.placeholder.com/800x400?text=Chit-Chat+Demo" width="100%" height="auto" style="border-radius: 10px; margin: 20px 0;">
 
-</div>
 
 ---
 
-## 🎯 What Makes Chit-Chat Special?
+## 🎯 What Makes dotConnect Special?
 
-✅ **Email OTP Verification** - Secure signup with one-time passwords  
-✅ **Real-time Messaging** - Instant messaging with Socket.IO  
-✅ **Online Presence** - See who's online in real-time  
-✅ **Connection System** - Send and manage connection requests  
-✅ **Live Notifications** - Instant alerts for requests, accepts, and messages  
-✅ **Profile Customization** - Upload profiles with Cloudinary  
-✅ **Resource Sharing** - Share jobs, events, posts, and notes  
+dotConnect is a **unified platform** for modern networking and collaboration:
+
+✅ **Verified Accounts** - Secure signup with email OTP verification  
+✅ **Real-time Messaging** - Instant chat with Socket.IO (Chit-Chat feature)  
+✅ **Job Board** - Share and discover job opportunities  
+✅ **Event Sharing** - Post and find events in your network  
+✅ **Post Creation** - Share content with your connections  
+✅ **Study Resources** - Share notes, papers, syllabi, and Q&A banks  
+✅ **Connection System** - Build your professional network  
+✅ **Live Notifications** - Real-time alerts for all activities  
+✅ **Online Presence** - See who's active in real-time  
 ✅ **Mobile Responsive** - Works seamlessly on all devices  
 
 ---
@@ -219,52 +221,6 @@ npm run preview    # 👁️  Preview production build
 
 ---
 
-## 🔐 Security Best Practices
-
-⚠️ **Critical Security Notes:**
-
-- 🚫 **Never commit `.env` files** - Always use `.env.example` as template
-- 🔑 **Use Gmail App Passwords** - Not your regular account password
-- 🔐 **Strong JWT_SECRET** - Use a long random string in production
-- 🌐 **CORS Configuration** - Only allow your frontend domain in production
-- 🔄 **Rotate API Keys** - If ever exposed in logs or screenshots
-- 📦 **npm audit** - Run regularly to check for vulnerabilities
-
-```bash
-# Check for vulnerabilities
-npm audit
-npm audit fix
-```
-
----
-
-## 🚢 Deployment Guide
-
-### Deploy to Render (Recommended)
-
-1. **Push code to GitHub**
-2. **Create Render account** and connect GitHub
-3. **Set environment variables** in Render dashboard
-4. **Deploy** - Render handles the rest!
-
-### MongoDB Atlas Setup
-
-```bash
-1. Create account at mongodb.com/cloud/atlas
-2. Create a cluster
-3. Get connection string
-4. Add to your .env: MONGO_URI=mongodb+srv://user:pass@cluster.mongodb.net/db
-```
-
-### Cloudinary Setup
-
-```bash
-1. Sign up at cloudinary.com
-2. Get your Cloud Name, API Key, and API Secret
-3. Add to .env file
-```
-
----
 
 ## 📚 API Documentation
 
@@ -273,47 +229,95 @@ npm audit fix
 - `POST /api/auth/login` - Login user
 - `POST /api/auth/verify-otp` - Verify email OTP
 
-### Messages
+### Messaging (Chit-Chat)
 - `GET /api/messages/:userId` - Get chat history
 - `POST /api/messages` - Send message
+- `GET /api/users/online` - Get online users
 
-### Users
+### Users & Profiles
 - `GET /api/users` - Get all users
 - `GET /api/users/:id` - Get user profile
 - `PUT /api/users/:id` - Update profile
+- `GET /api/users/search` - Search users
 
-### Relationships
+### Relationships & Connections
 - `POST /api/relationships/request` - Send connection request
 - `PUT /api/relationships/:id/accept` - Accept request
 - `DELETE /api/relationships/:id` - Decline/remove connection
+- `GET /api/relationships` - Get all connections
+
+### Jobs
+- `GET /api/jobs` - Get all jobs
+- `POST /api/jobs` - Post a new job
+- `GET /api/jobs/:id` - Get job details
+- `PUT /api/jobs/:id` - Update job posting
+- `DELETE /api/jobs/:id` - Delete job
+
+### Events
+- `GET /api/events` - Get all events
+- `POST /api/events` - Create event
+- `GET /api/events/:id` - Get event details
+- `PUT /api/events/:id` - Update event
+- `DELETE /api/events/:id` - Delete event
+
+### Posts
+- `GET /api/posts` - Get all posts
+- `POST /api/posts` - Create post
+- `GET /api/posts/:id` - Get post details
+- `PUT /api/posts/:id` - Update post
+- `DELETE /api/posts/:id` - Delete post
+
+### Study Resources
+- `GET /api/resources/notes` - Get study notes
+- `GET /api/resources/papers` - Get research papers
+- `GET /api/resources/syllabus` - Get syllabi
+- `GET /api/resources/q-bank` - Get Q&A banks
+- `POST /api/resources` - Upload resource
+- `DELETE /api/resources/:id` - Delete resource
+
+### Notifications
+- `GET /api/notifications` - Get all notifications
+- `PUT /api/notifications/:id/read` - Mark as read
+- `DELETE /api/notifications/:id` - Delete notification
 
 ---
 
-## 🎨 Features Showcase
+## 🎨 Core Features
 
-### 💬 Real-time Messaging
-- Instant message delivery
-- Online/offline indicators
-- Message read status
+### 💬 Real-time Messaging (Chit-Chat)
+- Instant message delivery with Socket.IO
+- Online/offline user presence indicators
+- Message history and conversation management
 - Typing indicators
-
-### 👥 Connection System
-- Send connection requests
-- Accept/reject relationships
-- View connected users
-- Connection suggestions
-
-### 🔔 Notifications
 - Real-time notification alerts
-- Request notifications
-- Message notifications
-- Connection updates
+
+### 🤝 Connection & Network
+- Send and accept connection requests
+- Manage your professional network
+- View connected users
+- Relationship status tracking
+- Profile discovery
+
+### 📚 Resource Hub
+- **Jobs** - Post and browse job opportunities
+- **Events** - Share and attend community events
+- **Posts** - Create and share content
+- **Study Materials** - Share notes, papers, syllabi, Q&A banks
+- Resource categorization and search
 
 ### 👤 User Profiles
-- Custom profile pictures (Cloudinary)
+- Customizable profile with image uploads (Cloudinary)
 - Bio and status updates
-- Profile visibility
-- Account verification
+- Verified account badges
+- Profile visibility settings
+- Connection history
+
+### 🔔 Smart Notifications
+- Real-time connection requests
+- Message notifications
+- Resource sharing alerts
+- Activity updates
+- Customizable notification preferences
 
 ---
 
@@ -338,23 +342,18 @@ We love contributions! Here's how to help:
 
 ## 📞 Support & Community
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/YOUR_USERNAME/dotConnect/issues)
-- 💡 **Have a feature idea?** [Start a discussion](https://github.com/YOUR_USERNAME/dotConnect/discussions)
+- 🐛 **Found a bug?** [Open an issue](https://github.com/Rajan-chaudhary-947/dotConnect/issues)
+- 💡 **Have a feature idea?** [Start a discussion](https://github.com/Rajan-chaudhary-947/dotConnect/discussions)
 - 📧 **Questions?** Reach out or check existing issues
 
 ---
 
-## 📄 License
-
-This project is licensed under the **ISC License** - see [LICENSE](LICENSE) file for details.
-
----
 
 ## 👨‍💻 Author
 
 <div align="center">
 
-**Built with ❤️ by [Rajan Chaudhary](https://github.com/YOUR_USERNAME)**
+**Built with ❤️ by [Rajan Chaudhary](https://github.com/Rajan-chaudhary-947)**
 
 </div>
 
@@ -364,11 +363,11 @@ This project is licensed under the **ISC License** - see [LICENSE](LICENSE) file
 
 ### ⭐ If you find this project helpful, please consider giving it a star!
 
-[![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/dotConnect?style=social)](https://github.com/YOUR_USERNAME/dotConnect)
-[![GitHub forks](https://img.shields.io/github/forks/YOUR_USERNAME/dotConnect?style=social)](https://github.com/YOUR_USERNAME/dotConnect)
+[![GitHub stars](https://img.shields.io/github/stars/Rajan-chaudhary-947/dotConnect?style=social)](https://github.com/Rajan-chaudhary-947/dotConnect)
+[![GitHub forks](https://img.shields.io/github/forks/Rajan-chaudhary-947/dotConnect?style=social)](https://github.com/Rajan-chaudhary-947/dotConnect)
 
-### Made with 💬 Chit-Chat
+### Built for Connection & Collaboration
 
-**Happy Chatting!** 🎉
+**Happy Connecting!** 🚀
 
 </div>
