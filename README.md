@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌐 dotConnect
+# dotConnect
 
 ### A Comprehensive Social Collaboration Platform
 
@@ -16,28 +16,28 @@
 >
 > A full-stack MERN platform connecting students and professionals through messaging, resource sharing, networking, and real-time collaboration.
 
-
+</div>
 
 ---
 
-## 🎯 What Makes dotConnect Special?
+## What Makes dotConnect Special?
 
 dotConnect is a **unified platform** for modern networking and collaboration:
 
-✅ **Verified Accounts** - Secure signup with email OTP verification  
-✅ **Real-time Messaging** - Instant chat with Socket.IO (Chit-Chat feature)  
-✅ **Job Board** - Share and discover job opportunities  
-✅ **Event Sharing** - Post and find events in your network  
-✅ **Post Creation** - Share content with your connections  
-✅ **Study Resources** - Share notes, papers, syllabi, and Q&A banks  
-✅ **Connection System** - Build your professional network  
-✅ **Live Notifications** - Real-time alerts for all activities  
-✅ **Online Presence** - See who's active in real-time  
-✅ **Mobile Responsive** - Works seamlessly on all devices  
+**Verified Accounts** - Secure signup with email OTP verification  
+**Real-time Messaging** - Instant chat with Socket.IO (Chit-Chat feature)  
+**Job Board** - Share and discover job opportunities  
+**Event Sharing** - Post and find events in your network  
+**Post Creation** - Share content with your connections  
+**Study Resources** - Share notes, papers, syllabi, and Q&A banks  
+**Connection System** - Build your professional network  
+**Live Notifications** - Real-time alerts for all activities  
+**Online Presence** - See who's active in real-time  
+**Mobile Responsive** - Works seamlessly on all devices  
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -54,7 +54,7 @@ Before you begin, ensure you have the following installed:
 ### Installation & Setup
 
 <details open>
-<summary><b>📦 Step 1: Clone Repository</b></summary>
+<summary><b>Step 1: Clone Repository</b></summary>
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/dotConnect.git
@@ -64,7 +64,7 @@ cd dotConnect
 </details>
 
 <details open>
-<summary><b>🔧 Step 2: Backend Setup</b></summary>
+<summary><b>Step 2: Backend Setup</b></summary>
 
 ```bash
 cd backend
@@ -79,7 +79,7 @@ npm run dev
 </details>
 
 <details open>
-<summary><b>⚛️ Step 3: Frontend Setup</b></summary>
+<summary><b>Step 3: Frontend Setup</b></summary>
 
 ```bash
 cd frontend
@@ -97,13 +97,13 @@ npm run dev
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 <table>
 <tr>
 <td width="50%">
 
-### 🎨 Frontend
+### Frontend
 - **React 18** - UI library
 - **Vite** - Fast build tool
 - **Tailwind CSS** - Styling
@@ -116,7 +116,7 @@ npm run dev
 </td>
 <td width="50%">
 
-### 🔌 Backend
+### Backend
 - **Node.js** - Runtime
 - **Express** - Web framework
 - **MongoDB** - NoSQL database
@@ -133,27 +133,27 @@ npm run dev
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-📦 dotConnect/
-├── 🔙 backend/
+dotConnect/
+├── backend/
 │   ├── src/
-│   │   ├── 🎮 controllers/       # Business logic handlers
-│   │   ├── 🗄️  models/            # MongoDB schemas
-│   │   ├── 🛣️  routes/            # API endpoints
-│   │   ├── 🔐 middleware/        # Auth & custom middleware
-│   │   ├── 📚 lib/                # Utilities (DB, Socket, etc)
-│   │   └── 🚀 index.js            # Server entry point
+│   │   ├── controllers/       # Business logic handlers
+│   │   ├── models/            # MongoDB schemas
+│   │   ├── routes/            # API endpoints
+│   │   ├── middleware/        # Auth & custom middleware
+│   │   ├── lib/               # Utilities (DB, Socket, etc)
+│   │   └── index.js           # Server entry point
 │   ├── package.json
 │   └── .env.example
-├── ⚛️  frontend/
+├── frontend/
 │   ├── src/
-│   │   ├── 🎨 components/        # Reusable components
-│   │   ├── 📄 pages/              # Page components
-│   │   ├── 🏪 store/              # Zustand state
-│   │   ├── 🔗 lib/                # Axios & utilities
-│   │   └── 📱 main.jsx            # Entry point
+│   │   ├── components/        # Reusable components
+│   │   ├── pages/             # Page components
+│   │   ├── store/             # Zustand state
+│   │   ├── lib/               # Axios & utilities
+│   │   └── main.jsx           # Entry point
 │   ├── package.json
 │   └── .env.example
 └── README.md
@@ -161,7 +161,7 @@ npm run dev
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 ### Backend Configuration (.env)
 
@@ -198,31 +198,31 @@ EMAIL_FROM=Chit-Chat <your_email@gmail.com>
 VITE_API_URL=http://localhost:8080/api
 ```
 
-> 📝 **Note:** See `.env.example` files for templates. Never commit real `.env` files!
+> **Note:** See `.env.example` files for templates. Never commit real `.env` files!
 
 ---
 
-## 📦 Available Scripts
+## Available Scripts
 
 ### Backend Commands
 ```bash
-npm run dev        # 🚀 Start dev server with auto-reload
-npm start          # ▶️  Start production server
-npm run seed:posts # 🌱 Populate database with sample posts
+npm run dev        # Start dev server with auto-reload
+npm start          # Start production server
+npm run seed:posts # Populate database with sample posts
 ```
 
 ### Frontend Commands
 ```bash
-npm run dev        # 🚀 Start dev server on port 5173
-npm run build      # 📦 Build for production
-npm run lint       # 🔍 Check code quality
-npm run preview    # 👁️  Preview production build
+npm run dev        # Start dev server on port 5173
+npm run build      # Build for production
+npm run lint       # Check code quality
+npm run preview    # Preview production build
 ```
 
 ---
 
 
-## 📚 API Documentation
+## API Documentation
 
 ### Authentication Routes
 - `POST /api/auth/signup` - Register new user
@@ -282,37 +282,37 @@ npm run preview    # 👁️  Preview production build
 
 ---
 
-## 🎨 Core Features
+## Core Features
 
-### 💬 Real-time Messaging (Chit-Chat)
+### Real-time Messaging (Chit-Chat)
 - Instant message delivery with Socket.IO
 - Online/offline user presence indicators
 - Message history and conversation management
 - Typing indicators
 - Real-time notification alerts
 
-### 🤝 Connection & Network
+### Connection & Network
 - Send and accept connection requests
 - Manage your professional network
 - View connected users
 - Relationship status tracking
 - Profile discovery
 
-### 📚 Resource Hub
+### Resource Hub
 - **Jobs** - Post and browse job opportunities
 - **Events** - Share and attend community events
 - **Posts** - Create and share content
 - **Study Materials** - Share notes, papers, syllabi, Q&A banks
 - Resource categorization and search
 
-### 👤 User Profiles
+### User Profiles
 - Customizable profile with image uploads (Cloudinary)
 - Bio and status updates
 - Verified account badges
 - Profile visibility settings
 - Connection history
 
-### 🔔 Smart Notifications
+### Smart Notifications
 - Real-time connection requests
 - Message notifications
 - Resource sharing alerts
@@ -321,15 +321,15 @@ npm run preview    # 👁️  Preview production build
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We love contributions! Here's how to help:
 
-1. 🍴 **Fork** the repository
-2. 🌿 **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. 💾 **Commit changes** (`git commit -m 'Add amazing feature'`)
-4. 📤 **Push to branch** (`git push origin feature/amazing-feature`)
-5. 🔄 **Open a Pull Request**
+1. **Fork** the repository
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit changes** (`git commit -m 'Add amazing feature'`)
+4. **Push to branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
 
 ### Development Guidelines
 - Follow existing code style
@@ -340,16 +340,16 @@ We love contributions! Here's how to help:
 
 ---
 
-## 📞 Support & Community
+## Support & Community
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/Rajan-chaudhary-947/dotConnect/issues)
-- 💡 **Have a feature idea?** [Start a discussion](https://github.com/Rajan-chaudhary-947/dotConnect/discussions)
-- 📧 **Questions?** Reach out or check existing issues
+- **Found a bug?** [Open an issue](https://github.com/Rajan-chaudhary-947/dotConnect/issues)
+- **Have a feature idea?** [Start a discussion](https://github.com/Rajan-chaudhary-947/dotConnect/discussions)
+- **Questions?** Reach out or check existing issues
 
 ---
 
 
-## 👨‍💻 Author
+## Author
 
 <div align="center">
 
@@ -368,6 +368,6 @@ We love contributions! Here's how to help:
 
 ### Built for Connection & Collaboration
 
-**Happy Connecting!** 🚀
+**Happy Connecting!**
 
 </div>
