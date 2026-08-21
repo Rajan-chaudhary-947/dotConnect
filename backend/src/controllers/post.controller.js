@@ -42,6 +42,28 @@ export const deletePost = async (req, res) => {
   }
 };
 
+export const toggleLikePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    const userId = req.user.userId;
+    const likes = post.likes || [];
+    const hasLiked = likes.includes(userId);
+
+    post.likes = hasLiked
+      ? likes.filter((likedUserId) => likedUserId !== userId)
+      : [...likes, userId];
+
+    await post.save();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 //Adding a comment to a post.
 export const addComment = async (req, res) => {

@@ -2,7 +2,7 @@ function Footer() {
     return (
         <footer className="bg-base-100 border-t border-base-300 text-base-content">
             {/* Top content */}
-            <div className="max-w-7xl mx-auto px-8 py-2 grid gap-8 grid-cols-1 ">
+            <div className="max-w-7xl mx-auto px-8 py-2 grid gap-2 grid-cols-1 ">
 
                 {/* Contact */}
                 <div className="w-full text-center text-center">
@@ -18,22 +18,15 @@ function Footer() {
 
 
                 {/* Team */}
-                <div className="grid grid-cols-2 gap-6 text-center">
+                <div className="grid grid-cols-2 gap-4 text-center">
                     <div>
-                        <h3 className="font-semibold text-md mb-1">Dev Team</h3>
+                        <h3 className="font-semibold text-md mb-1">Meet the Mind</h3>
                         <ul className=" text-sm">
                             <li>  
                                 <span className="font-medium text-primary">Rajan Chaudhary </span>
-                                <span className="text-base-content/70">Full Stack Dev</span>
+                                <span className="text-base-content/70">Software Developer</span>
                             </li>
-                            <li>  
-                                <span className="font-medium text-primary">Rudra Pratap Singh </span>
-                                <span className="text-base-content/70">UI/UX</span>
-                            </li>
-                            <li>  
-                                <span className="font-medium text-primary">Priyanshu Chauhan </span>
-                                <span className="text-base-content/70">Frontend Dev</span>
-                            </li>
+
                         </ul>
                     </div>
 

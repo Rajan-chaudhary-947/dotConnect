@@ -18,6 +18,7 @@ export const useNewStore = create((set) => ({
   isDeletingComment: false,
   isUpdatingPost: false,
   isDeletingPost: false,
+  isTogglingLike: false,
   isSharing: false,
 
   fetchPosts: async () => {
@@ -48,6 +49,21 @@ export const useNewStore = create((set) => ({
       throw new Error(error.response?.data?.message || "Failed to delete post");
     } finally {
       set({ isDeletingPost: false });
+    }
+  },
+
+  togglePostLike: async (postId) => {
+    set({ isTogglingLike: true });
+    try {
+      const res = await axiosInstance.patch(`/posts/${postId}/like`);
+      set((state) => ({
+        posts: state.posts.map((post) => (post._id === postId ? res.data : post)),
+      }));
+      return res.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || "Failed to update like");
+    } finally {
+      set({ isTogglingLike: false });
     }
   },
 

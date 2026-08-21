@@ -14,6 +14,7 @@ function HomePage() {
     posts,
     fetchPosts,
     deletePost,
+    togglePostLike,
     addComment,
     updateComment,
     deleteComment,
@@ -22,6 +23,7 @@ function HomePage() {
     isDeletingComment,
     isUpdatingPost,
     isDeletingPost,
+    isTogglingLike,
   } = useNewStore();
   const [replyText, setReplyText] = useState("");
   const [editingCommentId, setEditingCommentId] = useState(null);
@@ -107,6 +109,20 @@ function HomePage() {
     }
   };
 
+  const handleToggleLike = async (postId) => {
+    if (!authUser) {
+      toast.error("Please login to like posts");
+      return;
+    }
+    if (!postId) return;
+
+    try {
+      await togglePostLike(postId);
+    } catch (error) {
+      toast.error(error.message || "Failed to update like");
+    }
+  };
+
   return (
 
     <>
@@ -158,7 +174,25 @@ function HomePage() {
                   <p className="text-sm mt-1">{post.content}</p>
                   <div className="flex justify-between items-center mt-2">
                     <div className="flex gap-2">
-                      <button className="w-6 h-6 border border-base-300 rounded-sm"><Heart size={18} /></button>
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          className={`w-6 h-6 border border-base-300 rounded-sm flex items-center justify-center ${
+                            post.likes?.includes(authUser?.userId) ? "text-error" : ""
+                          }`}
+                          onClick={() => handleToggleLike(post._id)}
+                          disabled={isTogglingLike}
+                          aria-label={post.likes?.includes(authUser?.userId) ? "Unlike post" : "Like post"}
+                        >
+                          <Heart
+                            size={18}
+                            className={post.likes?.includes(authUser?.userId) ? "fill-current" : ""}
+                          />
+                        </button>
+                        {post.likes?.length > 0 && (
+                          <span className="text-xs text-base-content/70 min-w-3">{post.likes?.length}</span>
+                        )}
+                      </div>
                       <button
                         className="w-6 h-6 border border-base-300 rounded-sm"
                         onClick={() => toast("This feature is coming soon!")}
