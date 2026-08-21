@@ -1,50 +1,76 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect } from "react";
+import { AtSign, Download } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useNewStore } from "../../store/useNewStore.js";
+import Floator from "../../components/Floator.jsx";
+import Footer from "../../components/Footer.jsx";
+import { getResourceDownloadUrl } from "../../lib/axios.js";
 
-const PaperPage = () => {
-  const [papers, setPapers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function PaperPage() {
+  const { resources: papers, fetchResource, isLoading } = useNewStore();
 
-  useEffect(() => {
-    fetchPapers();
-  }, []);
+    useEffect(() => {
+      fetchResource("pyq");
+    }, [fetchResource]);
 
-  const fetchPapers = async () => {
-    try {
-      setLoading(true);
-      // Replace with your API endpoint
-      const response = await fetch('/api/papers');
-      if (!response.ok) throw new Error('Failed to fetch papers');
-      const data = await response.json();
-      setPapers(data);
-      setError(null);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    return (
+      <>
+        <section className="min-h-screen pt-16 flex flex-col items-center bg-base-100 text-base-content transition-all z-0">
+          <div className="w-full max-w-5xl p-4 bg-base-100 border border-base-300">
+            <div className="mt-6 w-full">
+              <h2 className="font-semibold">Previous Year Papers</h2>
 
-  if (loading) return <div className="loading">Loading papers...</div>;
-  if (error) return <div className="error">Error: {error}</div>;
+              <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-min">
+                {isLoading ? (
+                  <p>Loading papers...</p>
+                ) : papers.length === 0 ? (
+                  <p className="text-sm text-base-content/70">No papers found.</p>
+                ) : (
+                  papers.map((paper) => (
+                    <div
+                      key={paper._id}
+                      className="card bg-base-200 border border-base-300 p-3 w-full"
+                    >
+                      <Link
+                        to={`/profile/${paper.sharedBy}`}
+                        className="text-sm font-medium link link-hover text-primary"
+                      >
+                        <p className="font-medium flex items-center">
+                          <AtSign size={12} />
+                          {paper.sharedBy}
+                        </p>
+                      </Link>
 
-  return (
-    <div className="paper-page">
-      <h1>Papers</h1>
-      <div className="papers-container">
-        {papers.length > 0 ? (
-          papers.map((paper) => (
-            <div key={paper.id} className="paper-card">
-              <h2>{paper.title}</h2>
-              <p>{paper.description}</p>
+                      <p className="text-sm mt-1">{paper.title}</p>
+
+                      <div className="flex justify-end gap-2 mt-2">
+                        <a
+                          href={getResourceDownloadUrl(paper._id)}
+                          className="w-6 h-6 border border-base-300 rounded-sm"
+                          aria-label="Download paper"
+                        >
+                          <Download size={20} />
+                        </a>
+                        <a
+                          href={paper.fileUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-xs text-primary"
+                        >
+                          View
+                        </a>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
             </div>
-          ))
-        ) : (
-          <p>No papers found.</p>
-        )}
-      </div>
-    </div>
-  );
-};
+          </div>
+        </section>
+        <Footer />
+        <Floator />
+      </>
+    );
+}
 
 export default PaperPage;

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FileText, List, Loader2, Upload, X } from "lucide-react";
 import toast from "react-hot-toast";
-import { useAuthStore } from "../../store/useAuthStore";
 import { useNewStore } from "../../store/useNewStore";
 
 
@@ -13,8 +12,7 @@ function ShareResource({ onClose }) {
         file: "",
     });
     const modalRef = useRef(null);
-    const { authUser } = useAuthStore();
-    const { createResource, isCreatingResource } = useNewStore();
+    const { createResource, isSharing } = useNewStore();
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -33,16 +31,13 @@ function ShareResource({ onClose }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (!formData.title.trim() || !formData.resourceType.trim() || !formData.file.trim()) {
+        if (!formData.title.trim() || !formData.resourceType.trim() || !formData.file) {
             toast.error("All fields are required");
             return;
         }
 
         try {
-            await createResource({
-                author: authUser?.fullName || authUser?.email || "Guest",
-                formData: { ...formData },
-            });
+            await createResource(formData);
             toast.success("Resource shared");
             onClose();
         } catch (error) {
@@ -87,10 +82,10 @@ function ShareResource({ onClose }) {
                                 onChange={(e) => setFormData({ ...formData, resourceType: e.target.value })}
                             >
                                 <option value="" disabled>Select resource type</option>
-                                <option value="Notes">Notes</option>
-                                <option value="Syllabus">Syllabus</option>
-                                <option value="PYQ">PYQ</option>
-                                <option value="Que-Bank or Solution">Que-Bank or Solution</option>
+                                <option value="notes">Notes</option>
+                                <option value="syllabus">Syllabus</option>
+                                <option value="pyq">PYQ</option>
+                                <option value="queBankOrSoln">Que-Bank or Solution</option>
 
                             </select>
                         </div>
@@ -124,8 +119,8 @@ function ShareResource({ onClose }) {
                             <input
                                 type="file"
                                 className="file-input file-input-bordered w-full pl-10 text-sm"
-                                value={formData.file}
-                                onChange={(event) => setFormData({ ...formData, file: event.target.value })}
+                                accept="application/pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx"
+                                onChange={(event) => setFormData({ ...formData, file: event.target.files?.[0] || null })}
                             />
                         </div>
                     </div>
@@ -134,9 +129,9 @@ function ShareResource({ onClose }) {
                         <button
                             type="submit"
                             className="btn btn-primary min-w-24"
-                            disabled={isCreatingResource || !formData.title.trim() || !formData.resourceType.trim() || !formData.file.trim()}
+                            disabled={isSharing || !formData.title.trim() || !formData.resourceType.trim() || !formData.file}
                         >
-                            {isCreatingResource ? (
+                            {isSharing ? (
                                 <>
                                     <Loader2 className="size-4 animate-spin" />
                                     Creating Resource...

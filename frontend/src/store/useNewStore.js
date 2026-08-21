@@ -7,6 +7,7 @@ export const useNewStore = create((set) => ({
   posts: [],
   jobs: [],
   events: [],
+  resources: [],
   isLoading: false,
   isCreatingPost: false,
   isCreatingJob: false,
@@ -17,6 +18,7 @@ export const useNewStore = create((set) => ({
   isDeletingComment: false,
   isUpdatingPost: false,
   isDeletingPost: false,
+  isSharing: false,
 
   fetchPosts: async () => {
     set({ isLoading: true });
@@ -175,4 +177,36 @@ export const useNewStore = create((set) => ({
       set({ isDeletingEvent: false });
     }
   },
+
+  fetchResource: async (resourceType) => {
+    set({isLoading: true});
+    try{
+      const res = await axiosInstance.get(`/resources/${resourceType}`);
+      set({resources: Array.isArray(res.data) ? res.data : res.data?.ressources || [], isLoading: false});
+    } catch (err){
+      toast.error("Can't Fetch Resource");
+    } finally {
+      set({isLoading: false});
+    }
+  },
+
+  createResource: async (resData) => {
+    set({isSharing: true});
+    try{
+      const resourceData = resData.formData || resData;
+      const body = new FormData();
+      body.append("resourceType", resourceData.resourceType);
+      body.append("title", resourceData.title);
+      body.append("file", resourceData.file);
+
+      const res = await axiosInstance.post("/resources", body);
+      set((state) => ({ resources: [res.data, ...state.resources]}));
+      return res.data;
+    } catch (err){
+      toast.error(err.response?.data?.message || "Failed to share resource");
+      throw err;
+    } finally {
+      set({isSharing: false});
+    }
+  }
 }));

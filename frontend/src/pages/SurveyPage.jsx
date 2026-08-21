@@ -33,9 +33,11 @@ const SurveyPage = () => {
         );
     };
 
+    const [greet, setGreet] = useState(false);
     // --- Feedback ---
-    const handleFeedback = (msg) => {
+    const handleFeedback = (msg) => {  
         if (!msg.trim()) return;
+        setGreet(true);
         setFeedbacks([...feedbacks, { user: authUser.username, msg }]);
     };
 
@@ -116,14 +118,13 @@ const SurveyPage = () => {
                         </button>
 
                         {/* Feedback List */}
-                        <div className="mt-4 space-y-2">
-                            {feedbacks.map((f, i) => (
-                                <div key={i} className="p-2 bg-base-300 rounded-md">
-                                    <span className="font-medium">{f.user}: </span>
-                                    {f.msg}
+                        {greet==true &&(<div className="mt-4 space-y-2">
+
+                                <div className="p-2 bg-base-300 rounded-md">
+                                    <span className="font-medium">Thanks!, We'll look after it.</span>
                                 </div>
-                            ))}
-                        </div>
+
+                        </div>)}
                     </div>
 
                     {/* Admin Create Survey */}

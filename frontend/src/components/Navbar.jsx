@@ -68,7 +68,7 @@ const Navbar = () => {
                   >
                     <li><Link to="/resources/notes">Notes</Link></li>
                     <li><Link to="/resources/syllabus">Syllabus</Link></li>
-                    <li><Link to="/resources/paper">Paper</Link></li>
+                    <li><Link to="/resources/papers">Paper</Link></li>
                     <li><Link to="/resources/queBanknSoln">QueBank & Soln</Link></li>
                   </ul>
                 </div>
@@ -134,7 +134,7 @@ const Navbar = () => {
               <li className="menu-title">Resources</li>
               <li className="ml-2"><Link to="/resources/notes">Notes</Link></li>
               <li className="ml-2"><Link to="/resources/syllabus">Syllabus</Link></li>
-              <li className="ml-2"><Link to="/resources/paper">Paper</Link></li>
+              <li className="ml-2"><Link to="/resources/papers">Paper</Link></li>
               <li className="ml-2"><Link to="/resources/queBanknSoln">QueBank & Soln</Link></li>
 
               <li><Link to="/survey">Survey</Link></li>
